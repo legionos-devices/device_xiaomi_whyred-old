@@ -31,8 +31,8 @@ DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay \
     $(LOCAL_PATH)/overlay-lineage
 
-PRODUCT_ENFORCE_RRO_TARGETS := \
-    framework-res
+#PRODUCT_ENFORCE_RRO_TARGETS := \
+#    framework-res
 
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -156,6 +156,15 @@ PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-impl:32 \
     android.hardware.camera.provider@2.4-service \
     libxml2
+   
+
+# Pixel Camera
+PRODUCT_PACKAGES += \
+    Gcam
+
+# OTA
+PRODUCT_PACKAGES += \
+    Updates
 
 # CNE
 PRODUCT_PACKAGES += \
@@ -448,10 +457,20 @@ PRODUCT_PACKAGES += \
     wpa_supplicant \
     wpa_supplicant.conf
 
+
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wifi/p2p_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/p2p_supplicant_overlay.conf \
     $(LOCAL_PATH)/wifi/wpa_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant_overlay.conf \
     $(LOCAL_PATH)/wifi/WCNSS_qcom_cfg.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/WCNSS_qcom_cfg.ini
+
+# Hostapd
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/wifi/hostapd/hostapd.accept:system/etc/hostapd/hostapd.accept \
+    $(LOCAL_PATH)/wifi/hostapd/hostapd.deny:system/etc/hostapd/hostapd.deny \
+    $(LOCAL_PATH)/wifi/hostapd/hostapd_default.conf:system/etc/hostapd/hostapd_default.conf
+
+PRODUCT_PACKAGES += \
+    move_wifi_data.sh
 
 # Wi-Fi Display
 PRODUCT_PACKAGES += \

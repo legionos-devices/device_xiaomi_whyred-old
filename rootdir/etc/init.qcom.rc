@@ -53,13 +53,6 @@ on init
     symlink /sdcard /mnt/sdcard
     symlink /sdcard /storage/sdcard0
 
-    # Create cgroup mount point for memory
-    mkdir /sys/fs/cgroup/memory/bg 0750 root system
-    write /sys/fs/cgroup/memory/bg/memory.swappiness 140
-    write /sys/fs/cgroup/memory/bg/memory.move_charge_at_immigrate 1
-    chown root system /sys/fs/cgroup/memory/bg/tasks
-    chmod 0660 /sys/fs/cgroup/memory/bg/tasks
-
 on post-fs
     chmod 0755 /sys/kernel/debug/tracing
     chown 0660 /sys/class/leds/red/brightness
@@ -305,7 +298,11 @@ on post-fs-data
 
     #Change ownership to system
     chown system system /data/vendor/tombstones
+<<<<<<< HEAD
+
+=======
     
+>>>>>>> f5790eb9747a6d08c260acc878f1f999004de918
     mkdir /data/vendor/ramdump 0771 root system
     mkdir /data/vendor/bluetooth 0770 bluetooth bluetooth
     mkdir /data/vendor/ramdump/bluetooth 0770 bluetooth bluetooth
@@ -444,9 +441,9 @@ on post-fs-data
     chmod 2770 /data/vendor/swap
 
     # set aggressive read ahead for dm-0 and dm-1 during boot up
-    write /sys/block/dm-0/queue/read_ahead_kb 2048
-    write /sys/block/dm-1/queue/read_ahead_kb 2048
-    write /sys/block/dm-2/queue/read_ahead_kb 2048
+    write /sys/block/dm-0/queue/read_ahead_kb 128
+    write /sys/block/dm-1/queue/read_ahead_kb 128
+    write /sys/block/dm-2/queue/read_ahead_kb 128
 
     # Create vpp directory
     mkdir /data/vendor/vpp 0770 media media
@@ -676,9 +673,6 @@ on charger
 on property:init.svc.surfaceflinger=restarting
     stop  vendor.hwcomposer-2-1
     start vendor.hwcomposer-2-1
-
-on property:vendor.display.lcd_density=*
-    setprop ro.sf.lcd_density ${vendor.display.lcd_density}
 
 service time_daemon /system/vendor/bin/time_daemon
     class main
