@@ -307,6 +307,13 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     vendor.lineage.livedisplay@2.0-service-sdm
 
+# Moar Ril packages
+PRODUCT_PACKAGES += \
+    qti-telephony-hidl-wrapper \
+    qti-telephony-hidl-wrapper.xml \
+    qti-telephony-utils \
+    qti_telephony_utils.xml
+
 # Media
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/media/media_codecs.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs.xml \
@@ -395,9 +402,11 @@ PRODUCT_PACKAGES += \
 
 # RIL
 PRODUCT_PACKAGES += \
+    android.hardware.radio@1.4 \
     android.hardware.radio@1.2 \
     android.hardware.radio.config@1.0 \
     android.hardware.secure_element@1.0 \
+    android.hardware.radio.deprecated@1.0 \
     librmnetctl \
     libxml2 \
     libprotobuf-cpp-full
