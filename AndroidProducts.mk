@@ -14,9 +14,9 @@
 # limitations under the License.
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/stag_whyred.mk
+    $(LOCAL_DIR)/legion_whyred.mk
 
 COMMON_LUNCH_CHOICES := \
-    stag_whyred-user \
-    stag_whyred-userdebug \
-    stag_whyred-eng
+    legion_whyred-user \
+    legion_whyred-userdebug \
+    legion_whyred-eng

@@ -32,6 +32,9 @@ $(call inherit-product-if-exists, frameworks/native/build/phone-xhdpi-4096-dalvi
 # Inherit properties.mk
 $(call inherit-product, $(DEVICE_PATH)/properties.mk)
 
+# Enable updating of APEXes
+$(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
+
 # AuthSecret 
 PRODUCT_PACKAGES += \
     android.hardware.authsecret@1.0-service
